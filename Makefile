@@ -1,4 +1,4 @@
-SRCS_FILES =	char/ft_isdigit.c				\
+SRCS_FILES =			char/ft_isdigit.c				\
 				char/ft_isprint.c				\
 				char/ft_isalnum.c				\
 				char/ft_isalpha.c				\
@@ -19,17 +19,17 @@ SRCS_FILES =	char/ft_isdigit.c				\
 				string/ft_strmapi.c				\
 				string/ft_strnstr.c				\
 				string/ft_split.c				\
-				string/ft_striteri.c			\
+				string/ft_striteri.c				\
 				string/ft_strjoin.c				\
 				stdlib/ft_atoi.c				\
 				stdlib/ft_itoa.c				\
 				lists/ft_lstiter.c				\
 				lists/ft_lstsize.c				\
-				lists/ft_lstadd_front.c			\
-				lists/ft_lstadd_back.c			\
+				lists/ft_lstadd_front.c				\
+				lists/ft_lstadd_back.c				\
 				lists/ft_lstnew.c				\
 				lists/ft_lstlast.c				\
-				lists/ft_lstdelone.c			\
+				lists/ft_lstdelone.c				\
 				lists/ft_lstclear.c				\
 				lists/ft_lstmap.c				\
 				memory/ft_memcmp.c				\
@@ -42,34 +42,33 @@ SRCS_FILES =	char/ft_isdigit.c				\
 				fd/ft_putnbr_fd.c				\
 				fd/ft_putendl_fd.c				\
 				fd/ft_putstr_fd.c				\
-				fd/gnl.c						\
+				fd/gnl.c					\
 				utils/swap.c					\
 				ternary/int_trn.c				\
-				ternary/double_trn.c			\
+				ternary/double_trn.c				\
 				ternary/ptr_trn.c				\
 				ternary/char_trn.c				\
 				ternary/float_trn.c				\
-				math/fabs.c						\
+				math/fabs.c					\
 				math/int_part.c					\
-				math/minus_fract_int_part.c		\
-				math/fract_int_part.c			\
+				math/minus_fract_int_part.c			\
+				math/fract_int_part.c				\
 
-OBJS_FILES 		=		${SRCS:.c=.o}
+OBJS_FILES 		=	${SRCS:.c=.o}
 
 HEADER_INC		=	-I $(HEADER_PATH)
 
 HEADER_PATH		= 	includes
 
-HEADER_FILES	=	libft.h
+HEADER_FILES		=	libft.h
 
-SRCS_PATH 		=		.
+SRCS_PATH 		=	.
 
-
-CC				=	gcc
+CC			=	gcc
 
 FLAGS			=	-Wall -Wextra -Werror
 
-RM				=	rm -rf
+RM			=	rm -rf
 
 NAME			=	libft.a
 
@@ -78,22 +77,26 @@ HEADER			=	$(addprefix $(HEADER_PATH)/, $(HEADER_FILES))
 SRCS			=	$(addprefix $(SRCS_PATH)/, $(SRCS_FILES))
 
 
-all		:	$(NAME)
+all:	$(NAME)
 
 
-%.o		:	%.c
-			$(CC) $(FLAGS) -o $@ -c $< $(HEADER_INC)
+%.o:	%.c
+	$(CC) $(FLAGS) -o $@ -c $< $(HEADER_INC)
 
 
-$(NAME)		:	$(OBJS_FILES)
-			ar rc $(NAME) $(OBJS_FILES)
+$(NAME)	:	$(OBJS_FILES)
+	ar rc $(NAME) $(OBJS_FILES)
+
 
 clean:
-			${RM} ${OBJS_FILES} ${OBJ_BONUS}
+	${RM} ${OBJS_FILES} ${OBJ_BONUS}
+
 
 fclean:		clean
-			${RM} ${NAME}
+	${RM} ${NAME}
 
-re :		fclean all
 
-.PHONY:		all clean fclean re
+re:	fclean all
+
+
+.PHONY:	all clean fclean re
